@@ -1,0 +1,1 @@
+<?php $c=new mysqli("mysql","aluno","aluno123","escola"); ?>

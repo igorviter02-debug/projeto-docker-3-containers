@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  frontend:
+    build: ./frontend
+    ports: ["8080:80"]
+  backend:
+    build: ./backend
+    ports: ["8000:80"]
+    depends_on: [mysql]
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: escola
+      MYSQL_USER: aluno
+      MYSQL_PASSWORD: aluno123
+    ports: ["3306:3306"]
+    volumes:
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
